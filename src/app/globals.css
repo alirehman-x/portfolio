@@ -2,25 +2,80 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a0f00;
+  --muted: #8a6a4a;
+  --muted-foreground: #8a6a4a;
+  --card: rgba(184, 115, 51, 0.04);
+  --accent: #B87333;
+  --accent-gold: #D4A853;
+  --font-inter: var(--font-inter);
+  --font-space-grotesk: var(--font-space-grotesk);
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-accent: var(--accent);
+  --color-accent-gold: var(--accent-gold);
+  --font-sans: var(--font-inter), sans-serif;
+  --font-heading: var(--font-space-grotesk), sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #0d0804;
+  --foreground: #f5ede3;
+  --muted: #a07850;
+  --muted-foreground: #a07850;
+  --card: rgba(184, 115, 51, 0.06);
+  --accent: #C8843D;
+  --accent-gold: #E0B870;
+}
+
+/* Custom Utilities & Resets */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-background text-foreground antialiased;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  selection-color: var(--accent);
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(184, 115, 51, 0.25);
+  color: var(--accent);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(184, 115, 51, 0.2);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(184, 115, 51, 0.4);
+}
+
+/* Utilities */
+@utility glass {
+  backdrop-filter: blur(20px);
+  background: rgba(184, 115, 51, 0.04);
+  border: 1px solid rgba(184, 115, 51, 0.12);
+}
+
+@utility text-balance {
+  text-wrap: balance;
 }
