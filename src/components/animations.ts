@@ -1,6 +1,11 @@
 import type { Variants } from "framer-motion";
+import { Transition } from "framer-motion";
 
-export const springConfig = { type: "spring", stiffness: 100, damping: 20 };
+export const springConfig: Transition = {
+  type: "spring",
+  stiffness: 100,
+  damping: 20,
+};
 
 export const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 20 },
